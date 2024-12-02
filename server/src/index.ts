@@ -2,6 +2,12 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { requireAuth, verifyToken } from "@clerk/clerk-sdk-node";
+import mongoose from "mongoose";
+
+mongoose
+  .connect("mongodb://127.0.0.1:27017/", { dbName: "Cleark_Auth" })
+  .then(() => console.log(`MongoDb is connected....`))
+  .catch((error) => console.log(`Error in DB conection`, error));
 
 const app = express();
 app.use(cors());
